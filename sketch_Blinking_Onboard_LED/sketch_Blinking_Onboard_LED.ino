@@ -1,12 +1,20 @@
+#define PWM_PIN 11
 void setup()
 {
-  pinMode(12, OUTPUT);
+  pinMode(PWM_PIN, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  digitalWrite(12, HIGH);
-  delay(1000); // Wait for 1000 millisecond(s)
-  digitalWrite(12, LOW);
-  delay(1000); // Wait for 1000 millisecond(s)
+  for (int indx=0;indx<=255;indx++){
+    analogWrite(PWM_PIN,indx);
+    delay(20);
+  }
+
+  for (int indx=255;indx>=0;indx--){
+    analogWrite(PWM_PIN,indx);
+    delay(20);
+  }
+  
 }
