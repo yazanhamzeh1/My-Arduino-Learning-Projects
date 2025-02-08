@@ -1,20 +1,18 @@
-#define PWM_PIN 11
+int anaologIn,intensity;
 void setup()
 {
-  pinMode(PWM_PIN, OUTPUT);
-  Serial.begin(9600);
+  pinMode(11, OUTPUT);
+  
+  
 }
+  
 
 void loop()
 {
-  for (int indx=0;indx<=255;indx++){
-    analogWrite(PWM_PIN,indx);
-    delay(20);
-  }
-
-  for (int indx=255;indx>=0;indx--){
-    analogWrite(PWM_PIN,indx);
-    delay(20);
-  }
+  anaologIn=analogRead(A5);
+  intensity=anaologIn/4;
+  analogWrite(11, intensity);
+  //analogWrite(11,230);
+  delay(1000); // Wait for 1000 millisecond(s)
   
 }
