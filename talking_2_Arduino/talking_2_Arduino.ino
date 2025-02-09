@@ -1,13 +1,17 @@
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  Serial.setTimeout(10);
 
 }
 
 void loop() {
-  int intInput;
+  float intInput;
+  String stringInput;
   if(Serial.available()>0){
-    intInput=Serial.parseInt();
-    Serial.print(sqrt(intInput));
+    //intInput=Serial.parseFloat();
+    stringInput=Serial.readString();
+    Serial.print(stringInput);
+    //Serial.print(sqrt(intInput));
     Serial.println();
   }
 
