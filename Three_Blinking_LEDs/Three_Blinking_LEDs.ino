@@ -5,9 +5,11 @@
 void setup()
 {
   
+  
   pinMode(GREEN_LED, OUTPUT);
   pinMode(RED_LED, OUTPUT);
   pinMode(YELLOW_LED, OUTPUT);
+  Serial.begin(9600);
     
 }
  
@@ -15,18 +17,20 @@ void setup()
 void loop()
 {
   bool mode =true;
-  while(analogRead(Button)==LOW){
+  while(digitalRead(Button)==LOW){
     mode = !mode;
-    delay(300);
+    Serial.println(analogRead(Button));
     if (mode){
   	digitalWrite(GREEN_LED,HIGH);
   	digitalWrite(RED_LED,HIGH);
   	digitalWrite(YELLOW_LED,LOW);  
+    delay(300);
 	}
   else{
     digitalWrite(GREEN_LED,LOW);
   	digitalWrite(RED_LED,LOW);
   	digitalWrite(YELLOW_LED,HIGH);
+    delay(300);
     }  
     
   }
